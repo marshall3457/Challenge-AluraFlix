@@ -1,0 +1,110 @@
+{
+  "categorias": [
+    {
+      "id": "11",
+      "nombre": "Animacion",
+      "descripcion": "animacion de dibujos 2d o 3d",
+      "color": "red",
+      "codigoSeguridad": "eqw322"
+    },
+    {
+      "id": "12",
+      "nombre": "Comedia",
+      "descripcion": "Videos orientados a dar risa",
+      "color": "blue",
+      "codigoSeguridad": "ewq422"
+    }
+  ],
+  "videos": [
+    {
+      "id": "21",
+      "titulo": "Franco Escamilla - Monólogo No somos iguales",
+      "linkVideo": "https://www.youtube.com/watch?v=8AiulsAi_bM&t=89s",
+      "linkImagen": "https://i.ytimg.com/vi/8AiulsAi_bM/hq720.jpg?sqp=-oaymwEcCOgCEMoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLD43t2HDeZJZWLGXCitA0l9jWSX5g",
+      "categoria": "Comedia",
+      "descripcion": "Video de franco escamilla sobre de como no somos iguales",
+      "codigoSeguridad": "ret432"
+    },
+    {
+      "id": "22",
+      "titulo": "La verdad sobre hacer animaciones | TheOdd1sOut Español",
+      "linkVideo": "https://www.youtube.com/watch?v=nX3HjVleRjQ",
+      "linkImagen": "https://i.ytimg.com/vi/nX3HjVleRjQ/hq2.jpg?sqp=-oaymwEcCOADEI4CSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLBdfr0g-QG7Glvq4ZZe0WbgtkwrMg",
+      "categoria": "Animacion",
+      "descripcion": "Video de animacion sobre como la animacion no es ta facil de realizar",
+      "codigoSeguridad": "ett543"
+    },
+    {
+      "id": "23",
+      "titulo": "La Animacion Antes de Las Computadoras | TheOdd1sOut Español",
+      "linkVideo": "https://www.youtube.com/watch?v=snkQR_bWM-8&t=2s",
+      "linkImagen": "https://i.ytimg.com/vi/snkQR_bWM-8/hqdefault.jpg?sqp=-oaymwEbCKgBEF5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLBnL9kUYH7fJJWh-K9Gp5LNRZVWmw",
+      "categoria": "Animacion",
+      "descripcion": "Video de animacion donde explica como era antes la animacion sin las computadoras",
+      "codigoSeguridad": "tre453"
+    },
+    {
+      "id": "e61fed9f-35e1-4496-9ea3-3c315ef9a939",
+      "titulo": "dasdsa",
+      "linkVideo": "sadas",
+      "linkImagen": "dasdasd",
+      "categoria": "dsadas",
+      "descripcion": "dasds",
+      "codigoSeguridad": "dasdas"
+    },
+    {
+      "id": "7aa4ec9b-e968-466e-9b61-a8c4e1ad93b2",
+      "titulo": "ddasdsa",
+      "linkVideo": "dasdas",
+      "linkImagen": "asdasd",
+      "categoria": "dasdas",
+      "descripcion": "dsadas",
+      "codigoSeguridad": "dasdas"
+    },
+    {
+      "id": "575637dc-bb5d-4075-a623-2d15f5cb12ff",
+      "titulo": "dasdsadsa",
+      "linkVideo": "dasdsadas",
+      "linkImagen": "dasdas",
+      "categoria": "dsadas",
+      "descripcion": "sdasddasda",
+      "codigoSeguridad": "asdasdas"
+    },
+    {
+      "id": "df8127a5-70bd-4952-b76f-3561d558979f",
+      "titulo": "dadgdfd",
+      "linkVideo": "gdfgdfg",
+      "linkImagen": "gdfgdf",
+      "categoria": "gdfgdf",
+      "descripcion": "gdfgdfgff",
+      "codigoSeguridad": "fdgdfgdf"
+    },
+    {
+      "id": "7f8ace6b-b5f9-4e63-81ac-d486dc5f9c59",
+      "titulo": "dadgdfd",
+      "linkVideo": "gdfgdfg",
+      "linkImagen": "gdfgdf",
+      "categoria": "gdfgdf",
+      "descripcion": "gdfgdfgff",
+      "codigoSeguridad": "fdgdfgdffgdgfdgfd"
+    },
+    {
+      "id": "5baf579f-883b-4c96-9b47-95afb7e3a014",
+      "titulo": "dadgdfdgfdgdf",
+      "linkVideo": "gdfgdfggdfg",
+      "linkImagen": "gdfgdfgfdgdf",
+      "categoria": "gdfgdfgfdgd",
+      "descripcion": "gfdgfdgf",
+      "codigoSeguridad": "fdgdfgdffgdgfdgfd"
+    },
+    {
+      "id": "37fc37da-5f75-41df-a589-5093f1aa8647",
+      "titulo": "dadgdfdgfdgdf",
+      "linkVideo": "gdfgdfggdfg",
+      "linkImagen": "gdfgdfgfdgdf",
+      "categoria": "gdfgdfgfdgd",
+      "descripcion": "gfdgfdgf",
+      "codigoSeguridad": "423423423423423423"
+    }
+  ]
+}

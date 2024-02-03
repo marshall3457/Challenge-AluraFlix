@@ -1,15 +1,14 @@
 import styled from "styled-components";
 
-
 const Contenedor = styled.div`
     display: flex;
     justify-content: space-around;
     margin-bottom: 5rem;
+    gap: 1rem;
 `
 
 const ImagenCarousel = styled.img`
-    width: 30%;
-
+    width: 100%;
 `
 
 const Title = styled.h1`
@@ -27,6 +26,18 @@ const TitleContent = styled.div`
     margin-bottom: 1rem;
 `
 
+const VideoLink = styled.a`
+    text-decoration: none;
+    color: inherit;
+  /* Agrega más estilos según sea necesario */
+`;
+
+const ImagenCarouselWrapper = styled.div`
+    width: 500px;
+
+`
+
+
 const Carousel = (props) => {
     const {videosCarousel} = props
 
@@ -42,16 +53,20 @@ const Carousel = (props) => {
                     videosCarousel.map((video, i) => {
                         const {titulo, linkVideo, linkImagen, categoria, descripcion, copiaSeguridad} = video;
                         return (
-                            <ImagenCarousel 
-                                key={i}
-                                src={linkImagen}
-                                categoria={categoria}
-                                titulo={titulo}
-                                linkVideo={linkVideo}
-                                descripcion={descripcion}
-                                copiaSeguridad={copiaSeguridad}
+                            <ImagenCarouselWrapper key={i}>
 
-                            />
+                                <VideoLink href={linkVideo}>
+
+                                    <ImagenCarousel
+                                        src={linkImagen}
+                                        categoria={categoria}
+                                        titulo={titulo}
+                                        descripcion={descripcion}
+                                        copiaSeguridad={copiaSeguridad}
+                                    />
+                                </VideoLink>
+                            </ImagenCarouselWrapper>
+                        
 
                         )
                     })

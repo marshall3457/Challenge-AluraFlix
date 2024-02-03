@@ -72,6 +72,15 @@ const FormVideo = () => {
             event
         );
     };
+    
+    const handleLimpiar = () => {
+        setDataTitulo({ value: "", valid: null });
+        setDataLinkVideo({ value: "", valid: null });
+        setDataLinkImagen({ value: "", valid: null });
+        setDataCategoria({ value: "", valid: null });
+        setDataDescripcion({ value: "", valid: null });
+        setDataCodigo({ value: "", valid: null });
+    };
 
     return (
         <Form onSubmit={handleSubmit}>
@@ -85,7 +94,7 @@ const FormVideo = () => {
             <PositionButton>
                 <div>
                     <Button type="submit" variant="contained">Guardar</Button>
-                    <Button variant="contained">Limpiar</Button>
+                    <Button type="button" variant="contained" onClick={handleLimpiar}>Limpiar</Button>
                 </div>
                 
                 <Link to="/formCategory"><Button variant="outlined">Nueva Categoría</Button></Link>

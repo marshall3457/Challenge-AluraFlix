@@ -1,15 +1,14 @@
 import styled from "styled-components";
 
+const ImagenLogo = styled.img`
+    width: ${props => props.size};
+`;
 
 
 const Logo = (props) => {
-    const ImagenLogo = styled.img`
-        width: ${props.size};
 
-
-    `
     return (
-        <ImagenLogo src={props.src} ></ImagenLogo>
+        <ImagenLogo size={props.size} src={props.src} ></ImagenLogo>
 
     )
 

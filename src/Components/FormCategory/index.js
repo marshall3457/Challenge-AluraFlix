@@ -1,7 +1,7 @@
 import { useState } from "react"
 import styled from "styled-components"
 import { TextField, Button, TableCell, TableRow } from "@mui/material"
-
+import { handleRegistroSubmitCategory } from "../../Controllers/agregar.controller"
 
 const ContenedorFormTable = styled.div`
     display: flex;
@@ -60,6 +60,9 @@ const TableContainer = styled.div`
 `
 
 
+
+
+
 const FormCategoria  = () => {
 
     const [nombreCategoria, setNombreCategoria] = useState({
@@ -79,18 +82,40 @@ const FormCategoria  = () => {
         valid: null,
     })
 
+    const handleSubmit = (event) => {
+        event.preventDefault(); // Evita que se envíe el formulario por defecto
+    
+        // Llama a la función handleRegistroSubmit pasando los valores y el evento
+        handleRegistroSubmitCategory(
+            nombreCategoria.value,
+            descripcionCategoria.value,
+            color.value,
+            codigoSeguridad.value,
+            event
+        );
+    };
+
+    const handleLimpiar = () => {
+        setNombreCategoria({ value: "", valid: null });
+        setDescripcionCategoria({ value: "", valid: null });
+        setColor({ value: "", valid: null });
+        setCodigoSeguridad({ value: "", valid: null });
+
+    };
+    
     
     return (
         <ContenedorFormTable>
-            <Form>
+            <Form onSubmit={handleSubmit}>
                 <h1>Nueva categoría</h1>
                 <TextField label="Nombre" fullWidth size="small" value={nombreCategoria.value} onChange={(e) => setNombreCategoria({value: e.target.value, valid: null})}/>
                 <TextField label="Descripcion"  multiline rows={3} fullWidth value={descripcionCategoria.value} onChange={(e) => setDescripcionCategoria({value: e.target.value, valid: null})} />
                 <TextField label="Color" fullWidth size="small" value={color.value} onChange={(e) => setColor({value: e.target.value, valid: null})}/>
                 <TextField label="Código de seguridad" size="small" fullWidth  value={codigoSeguridad.value} onChange={(e) => setCodigoSeguridad({value: e.target.value, valid: null})}/>
                 <PositionButton>
-                    <Button variant="contained" contained>Guardar</Button>
-                    <Button variant="outlined">Limpiar</Button>
+                    <Button type="submit" variant="contained">Guardar</Button>
+                    <Button type="button" variant="contained" onClick={handleLimpiar}>Limpiar</Button>
+
                 </PositionButton>
 
                 

@@ -3,6 +3,7 @@ import Carousel from '../Carousel';
 import { useState, useEffect } from "react";
 import BannerMain from "../BannerMain";
 import { clientService } from "../../Service/client-service";
+import { Button } from "@mui/material";
 
 
 const MainStyle = styled.div`
@@ -30,11 +31,8 @@ const Main = () => {
                         videosCategoria[categoria] = [];
                     }
                     videosCategoria[categoria].push({
-                        titulo,
                         linkVideo,
                         linkImagen,
-                        descripcion,
-                        codigoSeguridad,
                     });
                 
             });
@@ -44,13 +42,16 @@ const Main = () => {
     }, []);
 
     return (
-        <MainStyle>
-            <BannerMain />
-            {Object.keys(videosPorCategoria).slice(0, 3).map((categoria, index) => (
-                //console.log(videosPorCategoria[categoria]);
-                <Carousel key={index} title={categoria} videosCarousel={videosPorCategoria[categoria]} />
-            ))}
-        </MainStyle>
+        <>
+            <MainStyle>
+                <BannerMain />
+                {Object.keys(videosPorCategoria).slice(0, 3).map((categoria, index) => (
+                    <Carousel key={index} title={categoria} videosCarousel={videosPorCategoria[categoria].slice(0, 3)} />
+                ))}
+            </MainStyle>
+
+            <Button variant="contained">Ver todas la categorias</Button> {/* Boton para ver todas la categorias, cabe recalcar que va a cargar las demas categorias mas no va a redicionar a otra pagina */}
+        </>
     );
 };
 

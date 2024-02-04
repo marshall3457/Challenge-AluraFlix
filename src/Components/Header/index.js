@@ -13,7 +13,7 @@ const Position = styled.div`
 const Header = () => {
     return(
         <Position>
-            <Link to="/main"><Logo src="logoAluraflix.png" alt="logo de aluraflix" size="70%" /></Link>
+            <Link to="/"><Logo src="logoAluraflix.png" alt="logo de aluraflix" size="70%" /></Link>
             <Link to="/formVideo"><Button variant="contained">Nuevo Video</Button></Link>
         </Position>
     )

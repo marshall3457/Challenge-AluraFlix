@@ -3,6 +3,13 @@ import styled from "styled-components"
 import { Link } from "react-router-dom"
 import { Button, TextField } from "@mui/material"
 import { handleRegistroSubmit } from "../../Controllers/agregar.controller"
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
+import { useEffect } from "react"
+import { clientService } from "../../Service/client-service"
+
 
 const Form  = styled.form`
     display: flex;
@@ -30,6 +37,7 @@ const PositionButton = styled.div`
 
 
 const FormVideo = () => {
+    const [categorias, setCategorias] = useState([]);
 
 
     const [dataTitulo, setDataTitulo] = useState({
@@ -82,13 +90,44 @@ const FormVideo = () => {
         setDataCodigo({ value: "", valid: null });
     };
 
+
+    useEffect(() => {
+        // Llamar a la función listaCategorias y actualizar el estado con las categorías
+        const fetchCategorias = async () => {
+          try {
+            const data = await clientService.listaCategorias();
+            setCategorias(data);
+          } catch (error) {
+            console.error('Error al obtener las categorías:', error);
+          }
+        };
+    
+        fetchCategorias();
+    }, []);
+
+
     return (
         <Form onSubmit={handleSubmit}>
             <h1>Nuevo video</h1>
             <TextField label="Título" fullWidth size="small" value={dataTitulo.value} onChange={(e) => setDataTitulo({value: e.target.value, valid: null})}/>
             <TextField label="Link del video" fullWidth size="small" value={dataLinkVideo.value} onChange={(e) => setDataLinkVideo({value: e.target.value, valid: null})}/>
             <TextField label="Link imagen del video" fullWidth size="small" value={dataLinkImagen.value} onChange={(e) => setDataLinkImagen({value: e.target.value, valid: null})}/>
-            <TextField label="Escoja una categoría" fullWidth size="small" value={dataCategoria.value} onChange={(e) => setDataCategoria({value: e.target.value, valid: null})}/>
+            <FormControl fullWidth>
+            <InputLabel id="demo-simple-select-label">Categoria</InputLabel>
+                <Select
+                    labelId="demo-simple-select-label"
+                    id="demo-simple-select"
+                    value={dataCategoria.value}
+                    label="Categoria"
+                    onChange={(e) => setDataCategoria({value: e.target.value, valid: null})}
+                >
+                    {categorias.map((categoria) => (
+                        <MenuItem key={categoria.nombre} value={categoria.nombre}>
+                            {categoria.nombre}
+                        </MenuItem>
+                    ))}
+                </Select>
+            </FormControl>
             <TextField label="Descripción" fullWidth multiline rows={3} value={dataDescripcion.value} onChange={(e) => setDataDescripcion({value: e.target.value, valid: null})}/>
             <TextField label="Código de seguridad" fullWidth size="small" value={dataCodigo.value} onChange={(e) => setDataCodigo({value: e.target.value, valid: null})}/>
             <PositionButton>

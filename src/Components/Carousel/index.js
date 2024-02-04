@@ -5,6 +5,7 @@ const Contenedor = styled.div`
     justify-content: space-around;
     margin-bottom: 5rem;
     gap: 1rem;
+    padding: 0 1rem;
 `
 
 const ImagenCarousel = styled.img`
@@ -49,9 +50,10 @@ const Carousel = (props) => {
 
             </TitleContent>
             <Contenedor>
+                {/* Poner un boton para ver todos los videos de la categoria */}
                 {
                     videosCarousel.map((video, i) => {
-                        const {titulo, linkVideo, linkImagen, categoria, descripcion, copiaSeguridad} = video;
+                        const {linkVideo, linkImagen} = video;
                         return (
                             <ImagenCarouselWrapper key={i}>
 
@@ -59,10 +61,6 @@ const Carousel = (props) => {
 
                                     <ImagenCarousel
                                         src={linkImagen}
-                                        categoria={categoria}
-                                        titulo={titulo}
-                                        descripcion={descripcion}
-                                        copiaSeguridad={copiaSeguridad}
                                     />
                                 </VideoLink>
                             </ImagenCarouselWrapper>

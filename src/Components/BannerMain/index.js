@@ -38,6 +38,7 @@ const Imagen = styled.img`
 
 const BannerMain = () => {
     return (
+        /* Porner un algoritmo que me eliga un video aleatoriamente para ponerlo con todo */
         <Position>
             <Bloque>
                 <Title>Front End</Title>

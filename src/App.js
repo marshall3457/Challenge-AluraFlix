@@ -26,7 +26,7 @@ function App() {
         <Container>
           <Header/>
           <Routes>
-            <Route path='/main' element={<Main />} />
+            <Route path='/' element={<Main />} />
             <Route path='/formVideo' element={<FormVideo />} />
             <Route path='/formCategory' element={<FormCategory/>}/>
             <Route path='*' element={<Error404/>}/>

@@ -19,8 +19,32 @@ const MainStyle = styled.div`
 
 const Main = () => {
     const [videosPorCategoria, setVideosPorCategoria] = useState({});
+    const [colorPorCategorias, setColorPorCategoria] = useState({});
 
     useEffect(() => {
+        
+        clientService.listaCategorias().then((data) => {
+            const colorCategoria = {};
+
+            data.forEach(({nombre,descripcion,color, codigoSeguridad}) => {
+
+                
+                if (!colorCategoria[nombre]) {
+                    colorCategoria[nombre] = [];
+                }
+                colorCategoria[nombre].push({
+                    color
+                });
+
+
+            });
+
+            setColorPorCategoria(colorCategoria);
+
+        }).catch((error) => alert("Ocurrió un error"));
+
+
+
         clientService.listaVideos().then((data) => {
             const videosCategoria = {};
 
@@ -41,12 +65,14 @@ const Main = () => {
         }).catch((error) => alert("Ocurrió un error"));
     }, []);
 
+
+
     return (
         <>
             <MainStyle>
                 <BannerMain />
                 {Object.keys(videosPorCategoria).slice(0, 3).map((categoria, index) => (
-                    <Carousel key={index} title={categoria} videosCarousel={videosPorCategoria[categoria].slice(0, 3)} />
+                    <Carousel key={index} title={categoria} color={colorPorCategorias[categoria][0].color} videosCarousel={videosPorCategoria[categoria].slice(0, 3)} />
                 ))}
             </MainStyle>
 

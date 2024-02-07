@@ -12,13 +12,7 @@ const ImagenCarousel = styled.img`
     width: 100%;
 `
 
-const Title = styled.h1`
-    background-color: #00C86F;
-    max-width: fit-content;
-    padding: 0.5rem;
-    margin-right: 0.5rem;
 
-`
 
 const TitleContent = styled.div`
     display: flex;
@@ -38,15 +32,21 @@ const ImagenCarouselWrapper = styled.div`
 
 `
 
+const Title = styled.h1`
+    background-color: ${props => props.color};
+    max-width: fit-content;
+    padding: 0.5rem;
+    margin-right: 0.5rem;
+
+`
 
 const Carousel = (props) => {
-    const {videosCarousel} = props
+    const {videosCarousel, color, title} = props
 
     return (
         <div>
             <TitleContent>
-                {props.title && <Title>{props.title}</Title>}
-                <h4>{props.subTitle}</h4>
+                <Title color={color}>{title}</Title>
 
             </TitleContent>
             <Contenedor>

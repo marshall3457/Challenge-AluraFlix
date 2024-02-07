@@ -28,11 +28,38 @@ const crearVideo = (titulo, linkVideo, linkImagen, categoria, descripcion, codig
     })
 };
 
-const eliminarCategoria = (id) => {
+const eliminarVideosPorCategoria = async (id) => {
+    try {
+        const respuesta = await fetch(`http://localhost:3000/categorias/${id}`);
+        const categoria = await respuesta.json();
+
+        const response = await fetch(`http://localhost:3000/videos?categoria=${categoria.nombre}`);
+        const videos = await response.json(); 
+        
+        console.log(videos)
+
+        for(let i = 0; i < videos.length; i++){
+            await fetch(`http://localhost:3000/videos/${videos[i].id}`, {
+                method: "DELETE"
+            })
+
+        }
+
+
+    }catch (error) {
+        console.error('Error:', error.message);
+    }
+}
+
+const eliminarCategoria = async (id) => {
+    // Eliminar videos de la categoría
+    await eliminarVideosPorCategoria(id)
+
     return fetch(`http://localhost:3000/categorias/${id}`, {
         method: "DELETE"
     })
 };
+
 
 const eliminarVideo = (id) => {
     return fetch(`http://localhost:3000/videos/${id}`, {

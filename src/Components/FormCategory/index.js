@@ -1,8 +1,8 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import styled from "styled-components"
-import { TextField, Button, TableCell, TableRow } from "@mui/material"
 import { handleRegistroSubmitCategory } from "../../Controllers/agregar.controller"
-
+import { TextField, TableContainer, Table, TableHead, TableRow, TableCell, TableBody, Button } from '@mui/material';
+import { clientService } from "../../Service/client-service";
 const ContenedorFormTable = styled.div`
     display: flex;
     width: 100%;
@@ -28,17 +28,7 @@ const PositionButton = styled.div`
 
 `
 
-const Tabla = styled.table`
-    border-collapse: collapse;
-    width: 100%;
-    td, th {
-        border: 1px solid #000; 
-        padding: 0;
-    }
-
-
-`
-
+/*
 const ButtonAgregados = styled(Button)`
     &&{
         padding: 0;
@@ -48,22 +38,32 @@ const ButtonAgregados = styled(Button)`
 
     }
     
-
-
 `
 
-const TableContainer = styled.div`
-    width: 100%;
-    height: 222px;
-    overflow-y: auto;
+*/
 
-`
+
 
 
 
 
 
 const FormCategoria  = () => {
+    const [categorias, setCategorias] = useState([]);
+
+    useEffect(() => {
+        // Llamar a la función listaCategorias y actualizar el estado con las categorías
+        const fetchCategorias = async () => {
+          try {
+            const data = await clientService.listaCategorias();
+            setCategorias(data);
+          } catch (error) {
+            console.error('Error al obtener las categorías:', error);
+          }
+        };
+    
+        fetchCategorias();
+    }, []);
 
     const [nombreCategoria, setNombreCategoria] = useState({
         value: "",
@@ -74,7 +74,7 @@ const FormCategoria  = () => {
         valid: null,
     })
     const [color, setColor] = useState({
-        value: "",
+        value: "#ffffff",
         valid: null,
     })
     const [codigoSeguridad, setCodigoSeguridad] = useState({
@@ -98,19 +98,19 @@ const FormCategoria  = () => {
     const handleLimpiar = () => {
         setNombreCategoria({ value: "", valid: null });
         setDescripcionCategoria({ value: "", valid: null });
-        setColor({ value: "", valid: null });
+        setColor({ value: "#ffffff", valid: null });
         setCodigoSeguridad({ value: "", valid: null });
 
     };
     
-    
+
     return (
         <ContenedorFormTable>
             <Form onSubmit={handleSubmit}>
                 <h1>Nueva categoría</h1>
                 <TextField label="Nombre" fullWidth size="small" value={nombreCategoria.value} onChange={(e) => setNombreCategoria({value: e.target.value, valid: null})}/>
                 <TextField label="Descripcion"  multiline rows={3} fullWidth value={descripcionCategoria.value} onChange={(e) => setDescripcionCategoria({value: e.target.value, valid: null})} />
-                <TextField label="Color" fullWidth size="small" value={color.value} onChange={(e) => setColor({value: e.target.value, valid: null})}/>
+                <TextField label="Color" type="color" fullWidth size="small" value={color.value} onChange={(e) => setColor({value: e.target.value, valid: null})}/>
                 <TextField label="Código de seguridad" size="small" fullWidth  value={codigoSeguridad.value} onChange={(e) => setCodigoSeguridad({value: e.target.value, valid: null})}/>
                 <PositionButton>
                     <Button type="submit" variant="contained">Guardar</Button>
@@ -121,146 +121,55 @@ const FormCategoria  = () => {
                 
             </Form>
 
-            <TableContainer >
-                <Tabla border={1}>
-
-                <TableRow >
-                    <TableCell  
-                        variant="head"
-                        align={"right"}
-                        style={{ width: "20%"}}
-                        sx={{
-                            backgroundColor: 'background.paper', 
-                            textAlign: 'start'
-                        }} 
-                    >
+            <TableContainer>
+                <Table>
+                    <TableHead>
+                    <TableRow>
+                        <TableCell variant="head" align="left" style={{ width: "10%", fontWeight: 'bold'}}>
                         Nombre
-                    </TableCell>
-                    <TableCell  
-                        variant="head"
-                        align={"right"}
-                        style={{ width: "50%"}}
-                        sx={{
-                            backgroundColor: 'background.paper', 
-                            textAlign: 'start'
-
-                        }} 
-                    >
+                        </TableCell>
+                        <TableCell variant="head" align="left" style={{ width: "60%", fontWeight: 'bold'}}>
                         Descripcion
-                    </TableCell>
-                    
-                    <TableCell  
-                        variant="head"
-                        align={"right"}
-                        style={{ width: "10%"}}
-                        sx={{
-                            backgroundColor: 'background.paper', 
-                            textAlign: 'center'
-
-                        }} 
-                    >
+                        </TableCell>
+                        <TableCell variant="head" align="center" style={{ width: "15%", fontWeight: 'bold'}}>
                         Remover
-                    </TableCell>
-                    
-                    <TableCell  
+                        </TableCell>
+                        <TableCell
                         variant="head"
-                        align={"right"}
-                        style={{ 
-                            width: "10%",
+                        align="center"
+                        style={{
+                            width: "15%",
                             padding: "0",
-                            margin: "0"
+                            margin: "0",
+                            fontWeight: 'bold'
                         }}
-                        sx={{
-                            backgroundColor: 'background.paper', 
-                            textAlign: 'center',
-                            padding: 0,
-                            margin: 0
-                        }} 
-                    >
+                        >
                         Editar
-                    </TableCell>
-                    
-                    
-                </TableRow>
-                <TableRow>
+                        </TableCell>
+                    </TableRow>
+                    </TableHead>
+                </Table>
 
-                    <TableCell>
-                        Dato 1
-                    </TableCell>
-                    <TableCell>
-                        Dato 1
-
-                    </TableCell>
-                    <TableCell>
-                        <ButtonAgregados variant="contained">Remover</ButtonAgregados>
-
-                    </TableCell>
-                    <TableCell>
-                        <ButtonAgregados variant="contained">Editar</ButtonAgregados>
-
-                    </TableCell>
-
-                </TableRow>
-                <TableRow>
-
-                    <TableCell>
-                        Dato 1
-                    </TableCell>
-                    <TableCell>
-                        Dato 1
-
-                    </TableCell>
-                    <TableCell>
-                        <ButtonAgregados variant="contained">Remover</ButtonAgregados>
-
-                    </TableCell>
-                    <TableCell>
-                        <ButtonAgregados variant="contained">Editar</ButtonAgregados>
-
-                    </TableCell>
-
-                </TableRow>
-                <TableRow>
-
-                    <TableCell>
-                        Dato 1
-                    </TableCell>
-                    <TableCell>
-                        Dato 1
-
-                    </TableCell>
-                    <TableCell>
-                        <ButtonAgregados variant="contained">Remover</ButtonAgregados>
-
-                    </TableCell>
-                    <TableCell>
-                        <ButtonAgregados variant="contained">Editar</ButtonAgregados>
-
-                    </TableCell>
-                </TableRow>
-                <TableRow>
-
-                    <TableCell>
-                        Dato 1
-                    </TableCell>
-                    <TableCell>
-                        Dato 1
-
-                    </TableCell>
-                    <TableCell>
-                        <ButtonAgregados variant="contained">Remover</ButtonAgregados>
-
-                    </TableCell>
-                    <TableCell>
-                        <ButtonAgregados variant="contained">Editar</ButtonAgregados>
-
-                    </TableCell>
-
-                </TableRow>
-                   
-            </Tabla>
+                <div style={{ maxHeight: '200px', overflowY: 'auto' }}>
+                    <Table>
+                        <TableBody>
+                            {categorias.map((categoria) => (
+                                <TableRow key={categoria.id}>
+                                <TableCell align="justify" style={{ width: "10%"}}>{categoria.nombre}</TableCell>
+                                <TableCell align="justify" style={{ width: "60%"}}>{categoria.descripcion}</TableCell>
+                                <TableCell>
+                                    <Button variant="contained" fullWidth onClick={() => clientService.eliminarCategoria(categoria.id)}>Remover</Button>
+                                </TableCell>
+                                <TableCell>
+                                    <Button variant="contained" fullWidth >Editar</Button>
+                                </TableCell>
+                                </TableRow>
+                            ))}
+                        </TableBody>
+                    </Table>
+                </div>
             </TableContainer>
-
+        
         </ContenedorFormTable>
 
     )

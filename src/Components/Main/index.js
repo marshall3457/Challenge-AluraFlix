@@ -18,7 +18,7 @@ const MainStyle = styled.div`
 //quitar los effects y darles await a todos los datos;
 const Main = () => {
     const [videosPorCategoria, setVideosPorCategoria] = useState([]);
-    const [colorPorCategorias, setColorPorCategoria] = useState([]);
+    const [colorPorCategorias, setColorPorCategoria] = useState({});
     
 
 
@@ -30,15 +30,12 @@ const Main = () => {
                 const colorCategoria = {};
     
                 data.forEach(({ nombre, descripcion, color, codigoSeguridad }) => {
-                    if (!colorCategoria[nombre]) {
-                        colorCategoria[nombre] = [];
-                    }
-                    colorCategoria[nombre].push({
-                        color
-                    });
+                
+                    colorCategoria[nombre] = color;
                 });
+
     
-                setColorPorCategoria({ ...colorCategoria });
+                setColorPorCategoria(colorCategoria);
             } catch (error) {
                 alert("Ocurrió un error");
             }
@@ -78,14 +75,14 @@ const Main = () => {
 
 
 
-    console.log(colorPorCategorias)
-
+    console.log(JSON.stringify(colorPorCategorias))
+    //color={colorPorCategorias[categoria] && colorPorCategorias[categoria][0] && colorPorCategorias[categoria][0].color}
     return (
         <>
             <MainStyle style={{ backgroundImage: `url(${videosPorCategoria[llavesCategorias[0]] && videosPorCategoria[llavesCategorias[0]][2] && videosPorCategoria[llavesCategorias[0]][2].linkImagen})` }}>
                 <BannerMain />
                 {Object.keys(videosPorCategoria).slice(0, 3).map((categoria, index) => (
-                    <Carousel key={index} title={categoria} color={colorPorCategorias[categoria][0].color} videosCarousel={videosPorCategoria[categoria].slice(0, 3)} />
+                    <Carousel key={index} title={categoria} color={colorPorCategorias[categoria]}  videosCarousel={videosPorCategoria[categoria].slice(0, 3)} />
                 ))}
             </MainStyle>
 

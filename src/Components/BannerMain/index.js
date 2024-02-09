@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom"
 import styled from "styled-components"
 
 const Position = styled.div`
@@ -5,13 +6,15 @@ const Position = styled.div`
     justify-content: space-between;
     padding: 16rem 2rem 0;
     margin-bottom: 5rem ;
+    flex-wrap: wrap;
 `
 const Bloque = styled.div`
-    margin-right: 5rem;
+    margin-right: 2rem;
 `
 
 const Title = styled.h1`
-    color: white;
+    color: black;
+    font-weight: bold;
     background-color: #6BD1FF;
     width: fit-content;
     padding: 0.75rem;
@@ -20,32 +23,36 @@ const Title = styled.h1`
 `
 
 const SubTitle = styled.h2`
-    color: white;
+    color: black;
     margin-bottom: 1rem;
     font-size: 2rem;
     font-weight: unset;
+    font-weight: bold;
+
 
 `
 const Parrafo = styled.p`
-    color: white;
+    color: black;
+    font-weight: bold;
 
 `
 
 const Imagen = styled.img`
-    width: 47%;
+    width: 100%;
     
 `
+
 
 const BannerMain = () => {
     return (
         /* Porner un algoritmo que me eliga un video aleatoriamente para ponerlo con todo */
         <Position>
             <Bloque>
-                <Title>Front End</Title>
-                <SubTitle>Challenge React</SubTitle>
-                <Parrafo>Este challenge es una forma de aprendizaje. Es un mecanismo donde podrás comprometerte en la resolución de un problema para poder aplicar todos los conocimientos adquiridos en la formación React.</Parrafo>
+                <Title>Comedia</Title>
+                <SubTitle>Franco Escamilla - Monólogo No somos iguales</SubTitle>
+                <Parrafo>Video de franco escamilla sobre de como no somos iguales</Parrafo>
             </Bloque>
-            <Imagen src="player.png" alt="Banner de la pagina"/>
+            <Link to={`https://www.youtube.com/watch?v=8AiulsAi_bM&t=89s`}><Imagen src="https://i.ytimg.com/vi/8AiulsAi_bM/hq720.jpg?sqp=-oaymwEcCOgCEMoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLD43t2HDeZJZWLGXCitA0l9jWSX5g" alt="Banner de la pagina"/></Link>
         </Position>
 
     )

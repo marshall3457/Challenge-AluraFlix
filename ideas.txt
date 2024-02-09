@@ -1,0 +1,9 @@
+Cuando termine este proyecto dejandolo asi con nomas con la funcionalidad de los videos:
+Agregar:
+
+-Ver todas la categorias
+-Ver todos los videos de la categoria: Agregando un boton para rediccionar a la persona con los videos de esta categoria
+-Construir un carousel que se mueva donde meta 7 videos para ver reccoridos
+-Agregar esqueleto a los videos, cuando cargen
+-Agregar mas estilizado con mui o ant
+

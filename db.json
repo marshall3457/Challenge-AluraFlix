@@ -1,31 +1,31 @@
 {
   "categorias": [
     {
-      "id": "11",
       "nombre": "Animacion",
-      "descripcion": "animacion de dibujos 2d o 3d",
-      "color": "red",
-      "codigoSeguridad": "eqw322"
+      "descripcion": "animacion de dibujos 2d o 3d,  o algo asi xd",
+      "color": "#FF0000",
+      "codigoSeguridad": "eqw322",
+      "id": "11"
     },
     {
       "id": "12",
       "nombre": "Comedia",
       "descripcion": "Videos orientados a dar risa",
-      "color": "blue",
+      "color": "#00FF00",
       "codigoSeguridad": "ewq422"
     },
     {
       "id": "8fa3f74c-1a75-443a-b2e0-dbd386631165",
       "nombre": "Anime",
       "descripcion": "categoria del estilo de animacion japones tambien conocido como anime",
-      "color": "yellow",
+      "color": "#0000FF",
       "codigoSeguridad": "ads423"
     },
     {
       "id": "1513d101-e966-405f-b118-b056f0a0ce24",
       "nombre": "Ciencia",
       "descripcion": "videos del area de la ciencias",
-      "color": "white",
+      "color": "#FFFF00",
       "codigoSeguridad": "ads423"
     }
   ],

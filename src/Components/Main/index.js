@@ -74,9 +74,9 @@ const Main = () => {
     const llavesCategorias = Object.keys(videosPorCategoria);
 
 
-
+    //para ver como esta constituida la estructura del objeto o array de forma mas grafica;
     console.log(JSON.stringify(colorPorCategorias))
-    //color={colorPorCategorias[categoria] && colorPorCategorias[categoria][0] && colorPorCategorias[categoria][0].color}
+
     return (
         <>
             <MainStyle style={{ backgroundImage: `url(${videosPorCategoria[llavesCategorias[0]] && videosPorCategoria[llavesCategorias[0]][2] && videosPorCategoria[llavesCategorias[0]][2].linkImagen})` }}>

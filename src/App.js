@@ -7,6 +7,7 @@ import Global from "./Global";
 import Error404 from "./Components/Error404";
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import styled from "styled-components";
+import Editar from "./Components/Editar";
 
 const Container = styled.div`
   display: flex;
@@ -29,6 +30,7 @@ function App() {
             <Route path='/' element={<Main />} />
             <Route path='/formVideo' element={<FormVideo />} />
             <Route path='/formCategory' element={<FormCategory/>}/>
+            <Route path='/editar/*' element={<Editar/>}/>
             <Route path='*' element={<Error404/>}/>
           </Routes>
           <Footer />

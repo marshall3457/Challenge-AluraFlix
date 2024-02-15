@@ -3,6 +3,7 @@ import styled from "styled-components"
 import { handleRegistroSubmitCategory } from "../../Controllers/agregar.controller"
 import { TextField, TableContainer, Table, TableHead, TableRow, TableCell, TableBody, Button } from '@mui/material';
 import { clientService } from "../../Service/client-service";
+import { Link } from "react-router-dom";
 const ContenedorFormTable = styled.div`
     display: flex;
     width: 100%;
@@ -27,24 +28,6 @@ const PositionButton = styled.div`
     }
 
 `
-
-/*
-const ButtonAgregados = styled(Button)`
-    &&{
-        padding: 0;
-        text-transform: none;
-        width: 100%;
-        border-radius: 0;
-
-    }
-    
-`
-
-*/
-
-
-
-
 
 
 
@@ -74,7 +57,7 @@ const FormCategoria  = () => {
         valid: null,
     })
     const [color, setColor] = useState({
-        value: "#ffffff",
+        value: "#00FFFF",
         valid: null,
     })
     const [codigoSeguridad, setCodigoSeguridad] = useState({
@@ -98,7 +81,7 @@ const FormCategoria  = () => {
     const handleLimpiar = () => {
         setNombreCategoria({ value: "", valid: null });
         setDescripcionCategoria({ value: "", valid: null });
-        setColor({ value: "#ffffff", valid: null });
+        setColor({ value: "#00FFFF", valid: null });
         setCodigoSeguridad({ value: "", valid: null });
 
     };
@@ -139,8 +122,6 @@ const FormCategoria  = () => {
                         align="center"
                         style={{
                             width: "15%",
-                            padding: "0",
-                            margin: "0",
                             fontWeight: 'bold'
                         }}
                         >
@@ -155,13 +136,13 @@ const FormCategoria  = () => {
                         <TableBody>
                             {categorias.map((categoria) => (
                                 <TableRow key={categoria.id}>
-                                <TableCell align="justify" style={{ width: "10%"}}>{categoria.nombre}</TableCell>
-                                <TableCell align="justify" style={{ width: "60%"}}>{categoria.descripcion}</TableCell>
-                                <TableCell>
+                                <TableCell align="left" style={{ width: "10%"}}>{categoria.nombre}</TableCell>
+                                <TableCell align="left" style={{ width: "60%"}}>{categoria.descripcion}</TableCell>
+                                <TableCell style={{ width: "15%"}}>
                                     <Button variant="contained" fullWidth onClick={() => clientService.eliminarCategoria(categoria.id)}>Remover</Button>
                                 </TableCell>
-                                <TableCell>
-                                    <Button variant="contained" fullWidth >Editar</Button>
+                                <TableCell style={{ width: "15%"}}>
+                                    <Link to={`/editar?id=${categoria.id}`}> <Button variant="contained" fullWidth>Editar</Button></Link>
                                 </TableCell>
                                 </TableRow>
                             ))}

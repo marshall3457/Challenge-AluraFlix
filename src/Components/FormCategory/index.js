@@ -4,6 +4,7 @@ import { handleRegistroSubmitCategory } from "../../Controllers/agregar.controll
 import { TextField, TableContainer, Table, TableHead, TableRow, TableCell, TableBody, Button } from '@mui/material';
 import { clientService } from "../../Service/client-service";
 import { Link } from "react-router-dom";
+import validacionFormulario from "../../Validaciones/validacionVideo";
 const ContenedorFormTable = styled.div`
     display: flex;
     width: 100%;
@@ -57,8 +58,7 @@ const FormCategoria  = () => {
         valid: null,
     })
     const [color, setColor] = useState({
-        value: "#00FFFF",
-        valid: null,
+        value: "#00FFFF"
     })
     const [codigoSeguridad, setCodigoSeguridad] = useState({
         value: "",
@@ -81,7 +81,7 @@ const FormCategoria  = () => {
     const handleLimpiar = () => {
         setNombreCategoria({ value: "", valid: null });
         setDescripcionCategoria({ value: "", valid: null });
-        setColor({ value: "#00FFFF", valid: null });
+        setColor({ value: "#00FFFF" });
         setCodigoSeguridad({ value: "", valid: null });
 
     };
@@ -91,14 +91,45 @@ const FormCategoria  = () => {
         <ContenedorFormTable>
             <Form onSubmit={handleSubmit}>
                 <h1>Nueva categoría</h1>
-                <TextField label="Nombre" fullWidth size="small" value={nombreCategoria.value} onChange={(e) => setNombreCategoria({value: e.target.value, valid: null})}/>
-                <TextField label="Descripcion"  multiline rows={3} fullWidth value={descripcionCategoria.value} onChange={(e) => setDescripcionCategoria({value: e.target.value, valid: null})} />
-                <TextField label="Color" type="color" fullWidth size="small" value={color.value} onChange={(e) => setColor({value: e.target.value, valid: null})}/>
-                <TextField label="Código de seguridad" size="small" fullWidth  value={codigoSeguridad.value} onChange={(e) => setCodigoSeguridad({value: e.target.value, valid: null})}/>
+                <TextField 
+                    label="Nombre" 
+                    fullWidth size="small" 
+                    error={nombreCategoria.valid === false} 
+                    helperText={nombreCategoria.valid === false && "El campo no debe estar vacio"} 
+                    value={nombreCategoria.value} 
+                    onChange={(e) => setNombreCategoria({value: e.target.value, valid: validacionFormulario(e.target.value)})}
+                />
+                <TextField 
+                    label="Descripcion"  
+                    multiline 
+                    rows={3} 
+                    fullWidth 
+                    error={descripcionCategoria.valid === false} 
+                    helperText={descripcionCategoria.valid === false && "El campo no debe estar vacio"} 
+                    value={descripcionCategoria.value} 
+                    onChange={(e) => setDescripcionCategoria({value: e.target.value, valid: validacionFormulario(e.target.value)})} 
+                />
+                <TextField 
+                    label="Color" 
+                    type="color" 
+                    fullWidth 
+                    size="small" 
+                    value={color.value} 
+                    onChange={(e) => setColor({value: e.target.value})}
+                />
+                <TextField
+                    label="Código de seguridad" 
+                    size="small" 
+                    fullWidth  
+                    error={codigoSeguridad.valid === false} 
+                    helperText={codigoSeguridad.valid === false && "El campo no debe estar vacio"} 
+                    value={codigoSeguridad.value} 
+                    onChange={(e) => setCodigoSeguridad({value: e.target.value, valid: validacionFormulario(e.target.value)})}
+                />
+
                 <PositionButton>
                     <Button type="submit" variant="contained">Guardar</Button>
                     <Button type="button" variant="contained" onClick={handleLimpiar}>Limpiar</Button>
-
                 </PositionButton>
 
                 

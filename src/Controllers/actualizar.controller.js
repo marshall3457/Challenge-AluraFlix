@@ -5,7 +5,7 @@ const actualizarCategoria = (nombre, descripcion, color, codigoSeguridad, id, ev
     event.preventDefault();
 
     clientService.actualizarCategoria(nombre, descripcion, color, codigoSeguridad, id).then(() => {
-        console.log("Actualizado con exito");
+        window.location.href = "/exitoEditar";
     }).catch(err =>console.log("Error al realizar la solicitud:", err));
 
 }

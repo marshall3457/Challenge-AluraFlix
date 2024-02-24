@@ -56,6 +56,7 @@ const Main = () => {
                         videosCategoria[categoria] = [];
                     }
                     videosCategoria[categoria].push({
+                        titulo,
                         linkVideo,
                         linkImagen,
                     });
@@ -74,8 +75,6 @@ const Main = () => {
     const llavesCategorias = Object.keys(videosPorCategoria);
 
 
-    //para ver como esta constituida la estructura del objeto o array de forma mas grafica;
-    console.log(JSON.stringify(colorPorCategorias))
 
     return (
         <>

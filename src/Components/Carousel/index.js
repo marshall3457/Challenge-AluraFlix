@@ -1,3 +1,5 @@
+import { Button } from "@mui/material";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const Contenedor = styled.div`
@@ -17,8 +19,8 @@ const ImagenCarousel = styled.img`
 const TitleContent = styled.div`
     display: flex;
     align-items: center;
-    margin-left: 1.5rem;
-    margin-bottom: 1rem;
+    margin: 1rem 1.5rem;
+    justify-content: space-between;
 `
 
 const VideoLink = styled.a`
@@ -45,24 +47,27 @@ const Carousel = (props) => {
 
     return (
         <div>
+            
+
             <TitleContent>
                 <Title color={color}>{title}</Title>
-
+                <Link to={`/videoTotal?categoria=${title}`}><Button variant="contained">Ver todos los videos</Button></Link>
             </TitleContent>
             <Contenedor>
                 {/* Poner un boton para ver todos los videos de la categoria */}
                 {
                     videosCarousel.map((video, i) => {
-                        const {linkVideo, linkImagen} = video;
+                        const {titulo, linkVideo, linkImagen} = video;
+
                         return (
                             <ImagenCarouselWrapper key={i}>
 
                                 <VideoLink href={linkVideo}>
 
-                                    <ImagenCarousel
-                                        src={linkImagen}
-                                    />
+                                    <ImagenCarousel src={linkImagen} />
+                                    <h3>{titulo}</h3>
                                 </VideoLink>
+                                
                             </ImagenCarouselWrapper>
                         
 

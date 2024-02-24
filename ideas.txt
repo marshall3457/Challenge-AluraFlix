@@ -6,4 +6,5 @@ Agregar:
 -Construir un carousel que se mueva donde meta 7 videos para ver reccoridos
 -Agregar esqueleto a los videos, cuando cargen
 -Agregar mas estilizado con mui o ant
-
+-En remover utilizar un estilo de error cuando no pueda eliminar el elemento, y con un mensaje arriba del boton especificando de porque el error
+-Barra de buscar

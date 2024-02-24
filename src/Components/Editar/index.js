@@ -3,12 +3,14 @@ import { TextField, Button } from "@mui/material";
 import { useState, useEffect } from "react";
 import { clientService } from "../../Service/client-service";
 import { actualizarCategoria } from "../../Controllers/actualizar.controller";
+import validacionFormulario from "../../Validaciones/validacionVideo";
 
 const Form =  styled.form`
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 2rem;
+    padding: 1rem;
 `
 
 const PositionButton = styled.div`
@@ -28,7 +30,7 @@ const Editar = () => {
     const [dataCategoria, setCategoria] = useState({
         nombre: '',
         descripcionCategoria: '',
-        color: '',
+        color: '#ffffff',
         codigoSeguridad: '',
     });
 
@@ -41,8 +43,7 @@ const Editar = () => {
         valid: null,
     })
     const [color, setColor] = useState({
-        value: "",
-        valid: null,
+        value: ""
     })
     const [codigoSeguridad, setCodigoSeguridad] = useState({
         value: "",
@@ -75,7 +76,6 @@ const Editar = () => {
     }, [dataCategoria]);
 
 
-    console.log(dataCategoria.nombre); //si me imprime
 
 
 
@@ -96,7 +96,7 @@ const Editar = () => {
     const handleLimpiar = () => {
         setNombreCategoria({ value: "", valid: null });
         setDescripcionCategoria({ value: "", valid: null });
-        setColor({ value: "#ffffff", valid: null });
+        setColor({ value: "#ffffff"});
         setCodigoSeguridad({ value: "", valid: null });
 
     };
@@ -104,10 +104,41 @@ const Editar = () => {
     return (
         <Form onSubmit={handleSubmit}>
             <h1>Editar categoria</h1>
-            <TextField label="Nombre" fullWidth size="small" value={nombreCategoria.value} onChange={(e) => setNombreCategoria({value: e.target.value, valid: null})}/>
-            <TextField label="Descripcion"  multiline rows={3} fullWidth value={descripcionCategoria.value} onChange={(e) => setDescripcionCategoria({value: e.target.value, valid: null})} />
-            <TextField label="Color" type="color" fullWidth size="small" value={color.value} onChange={(e) => setColor({value: e.target.value, valid: null})}/>
-            <TextField label="Código de seguridad" size="small" fullWidth  value={codigoSeguridad.value} onChange={(e) => setCodigoSeguridad({value: e.target.value, valid: null})}/>
+            <TextField 
+                label="Nombre" 
+                fullWidth  
+                size="small" 
+                error={nombreCategoria.valid === false} 
+                helperText={nombreCategoria.valid === false && "El campo no debe estar vacio"} 
+                value={nombreCategoria.value} 
+                onChange={(e) => setNombreCategoria({value: e.target.value, valid: validacionFormulario(e.target.value)})}
+            />
+            <TextField 
+                label="Descripcion"  
+                multiline 
+                rows={3} 
+                fullWidth 
+                error={descripcionCategoria.valid === false} 
+                helperText={descripcionCategoria.valid === false && "El campo no debe estar vacio"} 
+                value={descripcionCategoria.value} 
+                onChange={(e) => setDescripcionCategoria({value: e.target.value, valid: validacionFormulario(e.target.value)})} 
+            />
+            <TextField 
+                label="Color" 
+                type="color" 
+                fullWidth 
+                size="small" 
+                value={color.value} 
+                onChange={(e) => setColor({value: e.target.value})}
+            />
+            <TextField 
+                label="Código de seguridad" 
+                size="small" fullWidth  
+                error={codigoSeguridad.valid === false} 
+                helperText={codigoSeguridad.valid === false && "El campo no debe estar vacio"} 
+                value={codigoSeguridad.value} 
+                onChange={(e) => setCodigoSeguridad({value: e.target.value, valid: validacionFormulario(e.target.value)})}
+            />
             <PositionButton>
                 <Button type="submit" variant="contained">Guardar</Button>
                 <Button type="button" variant="contained" onClick={handleLimpiar}>Limpiar</Button>

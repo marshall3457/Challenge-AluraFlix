@@ -9,6 +9,7 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import { useEffect } from "react"
 import { clientService } from "../../Service/client-service"
+import validacionFormulario from "../../Validaciones/validacionVideo"
 
 
 const Form  = styled.form`
@@ -109,9 +110,30 @@ const FormVideo = () => {
     return (
         <Form onSubmit={handleSubmit}>
             <h1>Nuevo video</h1>
-            <TextField label="Título" fullWidth size="small" value={dataTitulo.value} onChange={(e) => setDataTitulo({value: e.target.value, valid: null})}/>
-            <TextField label="Link del video" fullWidth size="small" value={dataLinkVideo.value} onChange={(e) => setDataLinkVideo({value: e.target.value, valid: null})}/>
-            <TextField label="Link imagen del video" fullWidth size="small" value={dataLinkImagen.value} onChange={(e) => setDataLinkImagen({value: e.target.value, valid: null})}/>
+            <TextField 
+                label="Título" 
+                fullWidth size="small" 
+                error={dataTitulo.valid === false} 
+                helperText={dataTitulo.valid === false && "El campo no debe estar vacio"} 
+                value={dataTitulo.value} 
+                onChange={(e) => setDataTitulo({value: e.target.value, valid: validacionFormulario(e.target.value)})}
+            />
+            <TextField 
+                label="Link del video" 
+                fullWidth size="small" 
+                error={dataLinkVideo.valid === false} 
+                helperText={dataLinkVideo.valid === false && "El campo no debe estar vacio"} 
+                value={dataLinkVideo.value} 
+                onChange={(e) => setDataLinkVideo({value: e.target.value, valid: validacionFormulario(e.target.value)})}
+            />
+            <TextField 
+                label="Link imagen del video" 
+                fullWidth size="small" 
+                error={dataLinkImagen.valid === false} 
+                helperText={dataLinkImagen.valid === false && "El campo no debe estar vacio"} 
+                value={dataLinkImagen.value} 
+                onChange={(e) => setDataLinkImagen({value: e.target.value, valid: validacionFormulario(e.target.value)})}
+            />
             <FormControl fullWidth>
             <InputLabel id="demo-simple-select-label">Categoria</InputLabel>
                 <Select
@@ -128,8 +150,23 @@ const FormVideo = () => {
                     ))}
                 </Select>
             </FormControl>
-            <TextField label="Descripción" fullWidth multiline rows={3} value={dataDescripcion.value} onChange={(e) => setDataDescripcion({value: e.target.value, valid: null})}/>
-            <TextField label="Código de seguridad" fullWidth size="small" value={dataCodigo.value} onChange={(e) => setDataCodigo({value: e.target.value, valid: null})}/>
+            <TextField 
+                label="Descripción" 
+                fullWidth multiline 
+                rows={3} 
+                error={dataDescripcion.valid === false} 
+                helperText={dataDescripcion.valid === false && "El campo no debe estar vacio"} 
+                value={dataDescripcion.value} 
+                onChange={(e) => setDataDescripcion({value: e.target.value, valid: validacionFormulario(e.target.value)})}
+            />
+            <TextField 
+                label="Código de seguridad" 
+                fullWidth size="small" 
+                error={dataCodigo.valid === false} 
+                helperText={dataCodigo.valid === false && "El campo no debe estar vacio"} 
+                value={dataCodigo.value} 
+                onChange={(e) => setDataCodigo({value: e.target.value, valid: validacionFormulario(e.target.value)})}
+            />
             <PositionButton>
                 <div>
                     <Button type="submit" variant="contained">Guardar</Button>

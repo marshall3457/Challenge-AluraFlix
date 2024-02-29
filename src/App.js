@@ -10,6 +10,7 @@ import styled from "styled-components";
 import Editar from "./Components/Editar";
 import ExitoEditar from "./Components/ExitoEditar";
 import VideoTotal from "./Components/VideoTotal";
+import Resultado from "./Components/Resultado";
 
 const Container = styled.div`
   display: flex;
@@ -35,6 +36,7 @@ function App() {
             <Route path='/editar' element={<Editar/>}/>
             <Route path='/exitoEditar' element={<ExitoEditar/>}/>
             <Route path='/videoTotal' element={<VideoTotal/>}/>
+            <Route path='/resultado' element={<Resultado/>}/>
             <Route path='*' element={<Error404/>}/>
           </Routes>
           <Footer />

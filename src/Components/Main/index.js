@@ -56,7 +56,7 @@ const Main = () => {
                         videosCategoria[categoria] = [];
                     }
                     videosCategoria[categoria].push({
-                        titulo,
+                        titulo: titulo.length > 35 ? titulo.slice(0, 35) + " ..." : titulo,
                         linkVideo,
                         linkImagen,
                     });

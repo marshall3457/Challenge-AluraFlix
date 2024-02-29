@@ -45,7 +45,7 @@ const VideoTotal = () => {
                 const videosCategoria = data
                     .filter(video => video.categoria === categoria)
                     .map(({ titulo, linkVideo, linkImagen }) => ({
-                        titulo,
+                        titulo: titulo.length > 35 ? titulo.slice(0, 35) + " ..." : titulo,
                         linkVideo,
                         linkImagen,
                     }));
@@ -60,7 +60,7 @@ const VideoTotal = () => {
     }, [categoria]);
 
 
-        
+    console.log(videosCategoria)
     
  
     return(

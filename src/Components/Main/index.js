@@ -3,6 +3,7 @@ import Carousel from '../Carousel';
 import { useState, useEffect } from "react";
 import BannerMain from "../BannerMain";
 import { clientService } from "../../Service/client-service";
+import { Button } from "@mui/material";
 
 
 const MainStyle = styled.div`
@@ -19,9 +20,14 @@ const MainStyle = styled.div`
 const Main = () => {
     const [videosPorCategoria, setVideosPorCategoria] = useState([]);
     const [colorPorCategorias, setColorPorCategoria] = useState({});
-    
+    const [mostrarTodasCategorias, setMostrarTodasCategorias] = useState(false);
 
 
+    const handleVerTodasCategorias = () => {
+        setMostrarTodasCategorias(!mostrarTodasCategorias);
+    };
+
+      
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -80,11 +86,11 @@ const Main = () => {
         <>
             <MainStyle style={{ backgroundImage: `url(${videosPorCategoria[llavesCategorias[0]] && videosPorCategoria[llavesCategorias[0]][2] && videosPorCategoria[llavesCategorias[0]][2].linkImagen})` }}>
                 <BannerMain />
-                {Object.keys(videosPorCategoria).slice(0, 3).map((categoria, index) => (
+                {Object.keys(videosPorCategoria).slice(0, mostrarTodasCategorias ? videosPorCategoria.length : 3).map((categoria, index) => (
                     <Carousel key={index} title={categoria} color={colorPorCategorias[categoria]}  videosCarousel={videosPorCategoria[categoria].slice(0, 3)} />
                 ))}
             </MainStyle>
-
+            <Button variant="contained" fullWidth onClick={handleVerTodasCategorias}>Ver todas las categorias</Button>
         </>
     );
 };

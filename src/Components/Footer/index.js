@@ -6,6 +6,7 @@ const PositionLogo = styled.div`
   justify-content: center;
   border-top: 1px solid #2A7AE4;
   padding: 1rem;
+  margin-top: auto;
 `;
 
 const Footer = () => {

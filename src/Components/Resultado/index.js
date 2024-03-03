@@ -7,14 +7,15 @@ import { useLocation } from 'react-router-dom'; //utilizar para obtener la infor
 const Contenedor = styled.div`
     display: flex;
     justify-content: space-between;
+    flex-direction: column;
     margin-bottom: 5rem;
     gap: 1rem;
     padding: 1rem 1rem 0 1rem;
-    flex-wrap: wrap;
 `
 
 const ImagenCarousel = styled.img`
     width: 100%;
+
 `
 
 const VideoLink = styled.a`
@@ -34,7 +35,11 @@ const Title =  styled.h4`
 `
 
 const Videos = styled.div`
-
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: space-between;
 
 `
 
@@ -103,8 +108,8 @@ const Resultado = () => {
             })
 
         }
-        </Videos>
       {/* Aquí puedes mostrar los videosCategoria o cualquier otro contenido */}
+      </Videos>
     </Contenedor>
   );
 };

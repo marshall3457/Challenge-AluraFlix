@@ -68,18 +68,29 @@ const FormVideo = () => {
 
 
     const handleSubmit = (event) => {
-        event.preventDefault(); // Evita que se envíe el formulario por defecto
-    
-        // Llama a la función handleRegistroSubmit pasando los valores y el evento
-        handleRegistroSubmit(
-            dataTitulo.value,
-            dataLinkVideo.value,
-            dataLinkImagen.value,
-            dataCategoria.value,
-            dataDescripcion.value,
-            dataCodigo.value,
-            event
+        event.preventDefault();
+        console.log(dataTitulo.valid, dataLinkVideo.valid, dataLinkImagen.valid, dataCategoria.valid, dataDescripcion.valid, dataCodigo.valid)
+        // Validar todos los campos antes de enviar el formulario
+        const isValid = (
+            dataTitulo.valid &&
+            dataLinkVideo.valid &&
+            dataLinkImagen.valid &&
+            dataDescripcion.valid &&
+            dataCodigo.valid
         );
+    
+        if (isValid) {
+            // Llama a la función handleRegistroSubmit pasando los valores y el evento
+            handleRegistroSubmit(
+                dataTitulo.value,
+                dataLinkVideo.value,
+                dataLinkImagen.value,
+                dataCategoria.value,
+                dataDescripcion.value,
+                dataCodigo.value,
+                event
+            );
+        }
     };
     
     const handleLimpiar = () => {
@@ -112,7 +123,7 @@ const FormVideo = () => {
             <h1>Nuevo video</h1>
             <TextField 
                 label="Título" 
-                fullWidth size="small" 
+                fullWidth size="small"
                 error={dataTitulo.valid === false} 
                 helperText={dataTitulo.valid === false && "El campo no debe estar vacio"} 
                 value={dataTitulo.value} 

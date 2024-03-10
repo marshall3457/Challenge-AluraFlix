@@ -1,12 +1,12 @@
 import { v4 as uuid } from 'uuid';
 
-const listaVideos = () => fetch("http://localhost:3000/videos").then((respuesta) => respuesta.json());
+const listaVideos = () => fetch("https://fake-api-bay.vercel.app/videos").then((respuesta) => respuesta.json());
 
-const listaCategorias = () => fetch("http://localhost:3000/categorias").then((respuesta) => respuesta.json());
+const listaCategorias = () => fetch("https://fake-api-bay.vercel.app/categorias").then((respuesta) => respuesta.json());
 
 
 const crearCategoria = (nombre, descripcion, color, codigoSeguridad) => {
-    return fetch("http://localhost:3000/categorias", {
+    return fetch("https://fake-api-bay.vercel.app/categorias", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -18,7 +18,7 @@ const crearCategoria = (nombre, descripcion, color, codigoSeguridad) => {
 
 
 const crearVideo = (titulo, linkVideo, linkImagen, categoria, descripcion, codigoSeguridad) => {
-    return fetch("http://localhost:3000/videos", {
+    return fetch("https://fake-api-bay.vercel.app/videos", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -31,14 +31,14 @@ const crearVideo = (titulo, linkVideo, linkImagen, categoria, descripcion, codig
 
 const eliminarVideosPorCategoria = async (id) => {
     try {
-        const respuesta = await fetch(`http://localhost:3000/categorias/${id}`);
+        const respuesta = await fetch(`https://fake-api-bay.vercel.app/categorias/${id}`);
         const categoria = await respuesta.json();
 
-        const response = await fetch(`http://localhost:3000/videos?categoria=${categoria.nombre}`);
+        const response = await fetch(`https://fake-api-bay.vercel.app/videos?categoria=${categoria.nombre}`);
         const videos = await response.json(); 
         
         for(let i = 0; i < videos.length; i++){
-            await fetch(`http://localhost:3000/videos/${videos[i].id}`, {
+            await fetch(`https://fake-api-bay.vercel.app/videos/${videos[i].id}`, {
                 method: "DELETE"
             })
 
@@ -54,7 +54,7 @@ const eliminarCategoria = async (id) => {
     // Eliminar videos de la categoría
     await eliminarVideosPorCategoria(id);
 
-    return fetch(`http://localhost:3000/categorias/${id}`, {
+    return fetch(`https://fake-api-bay.vercel.app/categorias/${id}`, {
         method: "DELETE"
     })
 };
@@ -63,13 +63,13 @@ const eliminarCategoria = async (id) => {
 
 
 const eliminarVideo = (id) => {
-    return fetch(`http://localhost:3000/videos/${id}`, {
+    return fetch(`https://fake-api-bay.vercel.app/videos/${id}`, {
         method: "DELETE"
     })
 };
 
 const detalleCategoria = (id) => {
-    return fetch(`http://localhost:3000/categorias/${id}`).then((respuesta) => 
+    return fetch(`https://fake-api-bay.vercel.app/categorias/${id}`).then((respuesta) => 
     respuesta.json());
 };
 
@@ -79,7 +79,7 @@ const detalleVideo = (id) => {
 };
 
 const actualizarCategoria = (nombre, descripcion, color, codigoSeguridad, id) => {
-    return fetch(`http://localhost:3000/categorias/${id}`, {
+    return fetch(`https://fake-api-bay.vercel.app/categorias/${id}`, {
         method: "PUT",
         headers: {
             "Content-Type": "application/json"
@@ -94,7 +94,7 @@ const actualizarCategoria = (nombre, descripcion, color, codigoSeguridad, id) =>
 
 
 const actualizarVideo = (titulo, linkVideo, linkImagen, categoria, descripcion, codigoSeguridad, id) => {
-    return fetch(`http://localhost:3000/videos/${id}`, {
+    return fetch(`https://fake-api-bay.vercel.app/videos/${id}`, {
         method: "PUT",
         headers: {
             "Content-Type": "application/json"

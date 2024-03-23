@@ -8,7 +8,7 @@ const Position = styled.div`
     margin-bottom: 5rem ;
     flex-wrap: wrap;
 
-    @media (max-width: 420px){
+    @media (max-width: 500px){
         padding: 3rem 2rem 0;
 
     }

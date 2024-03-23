@@ -29,8 +29,8 @@ const ImagenCarouselWrapper = styled.div`
     width: 31%;
     background-color: #000;
     border-radius: 1rem;
-    
-    @media (max-width: 420px) {
+
+    @media (max-width: 500px) {
         width: unset; // Cambia el ancho cuando el ancho de la pantalla sea igual o menor a 768px
     }
 

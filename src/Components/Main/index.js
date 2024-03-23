@@ -11,7 +11,7 @@ const MainStyle = styled.div`
     background-repeat: no-repeat;
     background-size: 100%;
     background-position-y: -100px;
-    @media (max-width: 420px) {
+    @media (max-width: 500px) {
         background-size: 235%;
         background-position-y: unset;
 

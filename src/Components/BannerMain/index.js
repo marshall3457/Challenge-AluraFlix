@@ -7,6 +7,11 @@ const Position = styled.div`
     padding: 16rem 2rem 0;
     margin-bottom: 5rem ;
     flex-wrap: wrap;
+
+    @media (max-width: 420px){
+        padding: 3rem 2rem 0;
+
+    }
 `
 const Bloque = styled.div`
     margin-right: 2rem;
@@ -39,7 +44,7 @@ const Parrafo = styled.p`
 
 const Imagen = styled.img`
     width: 100%;
-    
+    border-radius: 1rem;
 `
 
 

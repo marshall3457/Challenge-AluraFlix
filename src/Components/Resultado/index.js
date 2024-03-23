@@ -15,6 +15,7 @@ const Contenedor = styled.div`
 
 const ImagenCarousel = styled.img`
     width: 100%;
+    border-radius: 1rem;
 
 `
 
@@ -26,6 +27,12 @@ const VideoLink = styled.a`
 
 const ImagenCarouselWrapper = styled.div`
     width: 31%;
+    background-color: #000;
+    border-radius: 1rem;
+    
+    @media (max-width: 420px) {
+        width: unset; // Cambia el ancho cuando el ancho de la pantalla sea igual o menor a 768px
+    }
 
 `
 
@@ -41,6 +48,11 @@ const Videos = styled.div`
   gap: 2rem;
   justify-content: space-between;
 
+`
+const TituloVideo = styled.h3`
+    text-indent: 20px;
+    margin: 0.225rem;
+    color: #FFF;
 `
 
 const Resultado = () => {
@@ -98,7 +110,7 @@ const Resultado = () => {
                         <VideoLink href={linkVideo}>
 
                             <ImagenCarousel src={linkImagen} />
-                            <h3>{titulo}</h3>
+                            <TituloVideo>{titulo}</TituloVideo>
                         </VideoLink>
                     </ImagenCarouselWrapper>
 

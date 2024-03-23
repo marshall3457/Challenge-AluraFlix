@@ -11,6 +11,12 @@ const MainStyle = styled.div`
     background-repeat: no-repeat;
     background-size: 100%;
     background-position-y: -100px;
+    @media (max-width: 420px) {
+        background-size: 235%;
+        background-position-y: unset;
+
+    }
+
 `;
 
 
@@ -90,7 +96,7 @@ const Main = () => {
                     <Carousel key={index} title={categoria} color={colorPorCategorias[categoria]}  videosCarousel={videosPorCategoria[categoria].slice(0, 3)} />
                 ))}
             </MainStyle>
-            <Button variant="contained" fullWidth onClick={handleVerTodasCategorias}>Ver todas las categorias</Button>
+            <Button variant="contained" fullWidth onClick={handleVerTodasCategorias}>{mostrarTodasCategorias ? "Ocultar categorías" : "Ver todas las categorías"}</Button>
         </>
     );
 };

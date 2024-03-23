@@ -74,7 +74,7 @@ const detalleCategoria = (id) => {
 };
 
 const detalleVideo = (id) => {
-    return fetch(`http://localhost:3000/videos/${id}`).then((respuesta) => 
+    return fetch(`https://fake-api-bay.vercel.app/videos/${id}`).then((respuesta) => 
     respuesta.json());
 };
 
